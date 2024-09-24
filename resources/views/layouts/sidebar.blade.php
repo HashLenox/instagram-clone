@@ -214,7 +214,7 @@
                     {{-- {{ route('profile.home', auth()->user()->username) }} --}}
 
 
-                    <x-avatar src="https://source.unsplash.com/400x400?face" class=" w-7 h-7 shrink-0" />
+                    <x-avatar src="https://loremflickr.com/200/200?random=1" class=" w-7 h-7 shrink-0" />
 
                     <h4 x-cloak x-show="!(shrink||drawer)"
                         class=" text-lg  {{ request()->routeIs('profile.home') ? 'font-bold' : 'font-medium' }} ">Profile
@@ -232,9 +232,10 @@
             <label tabindex="0" class="flex items-center w-full gap-5 m-1 bg-white cursor-pointer ">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
-                        <path fill-rule="evenodd"
-                            d="M3 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 5.25zm0 4.5A.75.75 0 013.75 9h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 9.75zm0 4.5a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75zm0 4.5a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d=" M3 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 5.25zm0 4.5A.75.75 0
+                    013.75 9h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 9.75zm0 4.5a.75.75 0 01.75-.75h16.5a.75.75 0 010
+                    1.5H3.75a.75.75 0 01-.75-.75zm0 4.5a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0
+                    01-.75-.75z" clip-rule="evenodd" />
                     </svg>
 
                 </span>

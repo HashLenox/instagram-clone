@@ -1,4 +1,4 @@
-<div class="max-w-lg mx-auto">
+<div class="max-w-xl mx-auto">
 
     {{-- header --}}
     <header class="flex items-center gap-3">

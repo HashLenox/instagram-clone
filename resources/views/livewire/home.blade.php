@@ -127,24 +127,24 @@ if(isScrolled && canLoadMore){
             </section>
 
             {{-- App Links --}}
-            <section class="mt-5">
-                <ol class="flex flex-wrap gap-1 list-none">
-                    <li class="text-xs font-medium text-gray-500">
+            <section class="mt-12">
+                <ol class="flex flex-wrap gap-1 text-sm list-none">
+                    <li class="font-medium text-gray-500">
                         <a href="#" class="hover:underline">About</a>
                     </li>
-                    <li class="text-xs font-medium text-gray-500">
+                    <li class="font-medium text-gray-500">
                         <span class="mx-1">•</span>
                         <a href="#" class="hover:underline">Services</a>
                     </li>
-                    <li class="text-xs font-medium text-gray-500">
+                    <li class="font-medium text-gray-500">
                         <span class="mx-1">•</span>
                         <a href="#" class="hover:underline">Contact</a>
                     </li>
-                    <li class="text-xs font-medium text-gray-500">
+                    <li class="font-medium text-gray-500">
                         <span class="mx-1">•</span>
                         <a href="#" class="hover:underline">Help</a>
                     </li>
-                    <li class="text-xs font-medium text-gray-500">
+                    <li class="font-medium text-gray-500">
                         <span class="mx-1">•</span>
                         <a href="#" class="hover:underline">Privacy</a>
                     </li>
