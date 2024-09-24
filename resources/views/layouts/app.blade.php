@@ -27,10 +27,10 @@
     <div class="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
         <div class="flex flex-col items-center justify-center drawer-content">
-            <!-- Page content here -->
+            {{-- <!-- Page content here -->
             <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">
                 Open drawer
-            </label>
+            </label> --}}
             {{ $slot }}
         </div>
         <div class="drawer-side">
