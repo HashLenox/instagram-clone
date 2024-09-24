@@ -24,13 +24,13 @@ if(isScrolled && canLoadMore){
     class="w-full h-full">
 
     {{-- Header --}}
-    <header class="sticky top-0 z-50 bg-white md:hidden">
+    <header class="sticky top-0 z-50 p-2 mb-2 bg-white md:hidden">
 
         <div class="grid items-center grid-cols-12 gap-2">
 
             <div class="col-span-3">
 
-                <img src="{{ asset('assets/logo.png') }}" class="w-full h-12 max-w-lg" alt="logo">
+                <img src="{{ asset('assets/images/logo.png') }}" class="w-full h-12 max-w-lg" alt="logo">
 
             </div>
 
@@ -65,10 +65,9 @@ if(isScrolled && canLoadMore){
     {{-- main --}}
     <main class="grid gap-8 lg:grid-cols-12 md:mt-10">
 
-        <aside class="overflow-hidden border lg:col-span-8">
+        <aside class="overflow-hidden lg:col-span-8">
 
             {{-- Stories --}}
-
             <section>
                 <ul class="flex items-center gap-2 overflow-x-auto scrollbar-hide">
                     @for ($i = 0; $i < 10; $i++)
@@ -82,12 +81,14 @@ if(isScrolled && canLoadMore){
             </section>
 
 
-
-
+            {{-- Posts --}}
+            <section class="p-2 mt-5 space-y-4">
+                <livewire:post.item />
+            </section>
         </aside>
 
 
-        <aside class="hidden p-4 border lg:col-span-4 lg:block">
+        <aside class="hidden p-4 lg:col-span-4 lg:block">
             <div class="flex items-center gap-2">
                 <x-avatar src="https://loremflickr.com/200/200?random" class="w-12 h-12" />
                 <h4 class="font-medium">
@@ -100,24 +101,27 @@ if(isScrolled && canLoadMore){
             <section class="mt-4">
                 <h4 class="font-bold text-gray-700">Suggestions for you</h4>
                 <ul class="my-3 space-y-3">
-                    <li class="flex items-center gap-3">
-                        <x-avatar src="https://loremflickr.com/200/200?random" class="w-12 h-12" />
+                    @for ($i = 0; $i < 5; $i++)
+                        <li class="flex items-center gap-3">
+                            <x-avatar src="https://loremflickr.com/200/200?random={{ $i }}"
+                                class="w-12 h-12" />
 
-                        <div class="grid w-full grid-cols-7 gap-2">
+                            <div class="grid w-full grid-cols-7 gap-2">
 
-                            <div class="col-span-5">
-                                <h5 class="text-sm font-semibold truncate">{{ fake()->name }}</h5>
-                                <p class="text-xs truncate"> Followed by {{ fake()->name }}</p>
+                                <div class="col-span-5">
+                                    <h5 class="text-sm font-semibold truncate">{{ fake()->name }}</h5>
+                                    <p class="text-xs truncate"> Followed by {{ fake()->name }}</p>
+                                </div>
+
+                                <div class="justify-end col-span-2 text-right lex">
+
+                                    <button class="ml-auto text-sm font-bold text-blue-500">Follow</button>
+
+                                </div>
+
                             </div>
-
-                            <div class="justify-end col-span-2 text-right lex">
-
-                                <button class="ml-auto text-sm font-bold text-blue-500">Follow</button>
-
-                            </div>
-
-                        </div>
-                    </li>
+                        </li>
+                    @endfor
                 </ul>
 
             </section>
