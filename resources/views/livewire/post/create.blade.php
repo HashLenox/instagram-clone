@@ -29,7 +29,7 @@
                 {{-- button --}}
                 <label for="customFileInput" class="flex flex-col gap-3 m-auto cursor-pointer max-w-fit ">
                     <input wire:model.live='media' id="customFileInput" type="file" multiple
-                        accept=".jpg,.png,.jpeg,.mp4" class="sr-only">
+                        accept=".jpg,.png,.jpeg,.mp4,.mov" class="sr-only">
 
                     <span class="m-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
