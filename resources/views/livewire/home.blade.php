@@ -83,7 +83,18 @@ if(isScrolled && canLoadMore){
 
             {{-- Posts --}}
             <section class="p-2 mt-5 space-y-4">
-                <livewire:post.item />
+
+                @if ($posts)
+
+                    @foreach ($posts as $post)
+                        <livewire:post.item :post="$post" wire:key="post-{{ $post->id }}" />
+                    @endforeach
+                @else
+                    <p class="flex justify-center foont-bold">
+                        No posts yet.
+                    </p>
+                @endif
+
             </section>
         </aside>
 

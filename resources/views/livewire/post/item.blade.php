@@ -2,10 +2,9 @@
 
     {{-- header --}}
     <header class="flex items-center gap-3">
-
         <x-avatar src="https://loremflickr.com/200/200?random" alt="User Avatar" class="w-12 h-12" />
         <div class="w-full gap-2 grid-grid-cols-7">
-            <h5 class="text-sm font-semibold truncate"> {{ fake()->name }}</h5>
+            <h5 class="text-sm font-semibold truncate"> {{ $post->user->name }}</h5>
         </div>
         <div class="flex justify-end col-span-2 text-right">
             <button class="ml-auto text-gray-500">
@@ -16,65 +15,73 @@
                 </svg>
             </button>
         </div>
-
     </header>
 
 
     {{-- main --}}
     <main>
         <div class="my-2">
-
-
             <div x-init="new Swiper($el, {
-            
-            
+
+
                 modules: [Navigation, Pagination],
                 loop: true,
-            
+
                 pagination: {
                     el: '.swiper-pagination',
                 },
-            
+
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-            
-            
+
+
             });" class="swiper  h-[500px] border bg-white">
 
                 <div x-cloak class="swiper-wrapper">
+                    @foreach ($post->media as $file)
+                        <li class="swiper-slide">
+                            @switch($file->mime)
+                                @case('video')
+                                    <x-video source="{{ $file->url }}" />
+                                @break
 
-                    <div class="swiper-slide"><x-video /></div>
-                    <div class="swiper-slide"> <img
-                            src="https://cdn.pixabay.com/photo/2022/10/23/13/43/canoe-7541311_1280.jpg" alt=""
-                            class="w-full block object-scale-down h-[500px]"></div>
+                                @case('image')
+                                    <img src="{{ $file->url }}" alt=""
+                                        class="w-full block object-scale-down h-[500px]">
+                                @break
 
+                                @default
+                            @endswitch
+                        </li>
+                    @endforeach
                 </div>
 
                 <div class="swiper-pagination"></div>
 
-                <!-- Prev -->
-                <div class="swiper-button-prev absolute top-1/2 z-10 p-2">
-                    <div class="border p-1 rounded-full text-gray-900 bg-white/95 opacity-60 hover:opacity-100 ">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.8"
-                            stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                        </svg>
+                @if (count($post->media) > 1)
+                    <!-- Prev -->
+                    <div class="swiper-button-prev absolute top-1/2 z-10 p-2">
+                        <div class="border p-1 rounded-full text-gray-900 bg-white/95 opacity-60 hover:opacity-100 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="2.8" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                            </svg>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Next -->
-                <div class="swiper-button-next absolute right-0 top-1/2 z-10 p-2">
-                    <div class="border p-1 rounded-full text-gray-900 bg-white/95 opacity-60 hover:opacity-100 ">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.8"
-                            stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                        </svg>
+                    <!-- Next -->
+                    <div class="swiper-button-next absolute right-0 top-1/2 z-10 p-2">
+                        <div class="border p-1 rounded-full text-gray-900 bg-white/95 opacity-60 hover:opacity-100 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="2.8" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
 
+                        </div>
                     </div>
-                </div>
-
+                @endif
                 <!-- If we need scrollbar -->
                 <div class="swiper-scrollbar"></div>
             </div>
@@ -85,7 +92,6 @@
 
     {{-- footer --}}
     <footer>
-
         <div class="flex items-center gap-4 my-2">
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9"
@@ -126,9 +132,8 @@
 
         {{-- name and comment --}}
         <div class="flex gap-2 text-sm font-medium">
-            <p><strong class="font-extrabold">{{ fake()->name }}</strong>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quos vel cum, totam sunt similique
-                neque.</p>
+            <p><strong class="font-extrabold">{{ $post->user->name }}</strong>
+                {{ $post->description }}</p>
         </div>
 
 
@@ -148,20 +153,12 @@
             </div>
 
             <span class="col-span-1 ml-auto">
-
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
                 </svg>
-
             </span>
         </form>
-
-
-
-
-
-
     </footer>
 </div>
