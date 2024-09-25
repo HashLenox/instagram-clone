@@ -86,7 +86,7 @@ if(isScrolled && canLoadMore){
 
                 @if ($posts)
 
-                    @foreach ($posts as $post)
+                    @foreach ($posts->take(10) as $post)
                         <livewire:post.item :post="$post" wire:key="post-{{ $post->id }}" />
                     @endforeach
                 @else
@@ -103,7 +103,7 @@ if(isScrolled && canLoadMore){
             <div class="flex items-center gap-2">
                 <x-avatar src="https://loremflickr.com/200/200?random" class="w-12 h-12" />
                 <h4 class="font-medium">
-                    {{ fake()->name }}
+                    {{ auth()->user()->name }}
                 </h4>
             </div>
 
