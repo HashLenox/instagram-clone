@@ -198,7 +198,6 @@
                         stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
-
                 </span>
 
                 <h4 x-cloak x-show="!(shrink||drawer)" class="text-lg font-medium ">Create</h4>
@@ -206,22 +205,17 @@
         </li>
 
 
-        @auth
 
-            <li>
-                <a wire:navigate href="#" class="flex items-center gap-5">
+        <li>
+            <a wire:navigate href="#" class="flex items-center gap-5">
+                {{-- {{ route('profile.home', auth()->user()->username) }} --}}
+                <x-avatar class=" w-7 h-7 shrink-0" />
+                <h4 x-cloak x-show="!(shrink||drawer)"
+                    class=" text-lg  {{ request()->routeIs('profile.home') ? 'font-bold' : 'font-medium' }} ">Profile
+                </h4>
+            </a>
+        </li>
 
-                    {{-- {{ route('profile.home', auth()->user()->username) }} --}}
-
-
-                    <x-avatar src="https://loremflickr.com/200/200?random=1" class=" w-7 h-7 shrink-0" />
-
-                    <h4 x-cloak x-show="!(shrink||drawer)"
-                        class=" text-lg  {{ request()->routeIs('profile.home') ? 'font-bold' : 'font-medium' }} ">Profile
-                    </h4>
-                </a>
-            </li>
-        @endauth
 
     </ul>
 
