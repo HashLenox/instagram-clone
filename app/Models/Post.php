@@ -25,4 +25,11 @@ class Post extends Model
     function user() : BelongsTo{
         return $this->belongsTo (User::class);
     }
+
+    function comments() : MorphMany
+    {
+        return $this->morphMany (Comment::class, 'commentable')->with('replies');
+    }
+
+
 }

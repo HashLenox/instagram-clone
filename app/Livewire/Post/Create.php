@@ -36,8 +36,7 @@ class Create extends ModalComponent
         $this->validate([
             'media.*'=>'required|file|mimes:png,jpg,mp4,jpeg,mov|max:100000',
             'allow_commenting'=>'boolean',
-            'hide_like_view'=>'boolean',
-
+            'hide_like_view'=>'boolean'
         ]);
 
 

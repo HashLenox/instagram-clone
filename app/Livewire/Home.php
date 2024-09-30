@@ -11,6 +11,13 @@ class Home extends Component
 
     public $posts;
 
+    #[On('closeModal')]
+    function reverUrl()
+    {
+        $this->js("history.replaceState({},'','/')");
+    }
+
+
 
    #[On('post-created')]
 
@@ -25,7 +32,8 @@ class Home extends Component
 
     function mount()
     {
-        $this->posts = Post::latest()->get(); // Fetch 20 random posts
+        $this->posts = Post::with('comments')->latest()->get();
+
     }
 
 

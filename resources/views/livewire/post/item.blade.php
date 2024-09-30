@@ -62,8 +62,8 @@
 
                 @if (count($post->media) > 1)
                     <!-- Prev -->
-                    <div class="swiper-button-prev absolute top-1/2 z-10 p-2">
-                        <div class="border p-1 rounded-full text-gray-900 bg-white/95 opacity-60 hover:opacity-100 ">
+                    <div class="absolute z-10 p-2 swiper-button-prev top-1/2">
+                        <div class="p-1 text-gray-900 border rounded-full bg-white/95 opacity-60 hover:opacity-100 ">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="2.8" stroke="currentColor" class="w-4 h-4">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -72,8 +72,8 @@
                     </div>
 
                     <!-- Next -->
-                    <div class="swiper-button-next absolute right-0 top-1/2 z-10 p-2">
-                        <div class="border p-1 rounded-full text-gray-900 bg-white/95 opacity-60 hover:opacity-100 ">
+                    <div class="absolute right-0 z-10 p-2 swiper-button-next top-1/2">
+                        <div class="p-1 text-gray-900 border rounded-full bg-white/95 opacity-60 hover:opacity-100 ">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="2.8" stroke="currentColor" class="w-4 h-4">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -138,7 +138,9 @@
 
 
         {{-- view post modal --}}
-        <button class="text-sm font-medium text-slate-500">View all 456 comments</button>
+        <button
+            onclick="Livewire.dispatch('openModal',{component:'post.view.modal',arguments:{'post':{{ $post->id }}}})"
+            class="text-sm font-medium text-slate-500">View all {{ $post->comments->count() }} comments</button>
 
         {{-- add comment --}}
         <form x-data="{ inputText: '' }" class="grid items-center w-full grid-cols-12">

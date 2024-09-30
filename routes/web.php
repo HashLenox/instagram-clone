@@ -5,7 +5,7 @@ use App\Livewire\Home;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', Home::class)->middleware(['auth', 'verified']);
+Route::get('/', Home::class)->middleware(['auth', 'verified'])->name('home');
 
 
 // Route::get('/dashboard', function () {
