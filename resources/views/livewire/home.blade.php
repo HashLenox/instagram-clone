@@ -86,7 +86,7 @@ if(isScrolled && canLoadMore){
 
                 @if ($posts)
 
-                    @foreach ($posts->take(10) as $post)
+                    @foreach ($posts as $post)
                         <livewire:post.item :post="$post" wire:key="post-{{ $post->id }}" />
                     @endforeach
                 @else

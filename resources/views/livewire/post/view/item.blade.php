@@ -1,8 +1,10 @@
-<div class="grid w-full h-full grid-cols-12 gap-3 ">
+<div class="grid w-full h-full gap-3 overflow-hidden lg:grid-cols-12">
 
-    <aside class="items-center w-full m-auto lg:col-span-7 ">
+    <aside class="items-center hidden w-full m-auto overflow-scroll scrollbar-hide lg:flex lg:col-span-7">
 
-        <div class="flex gap-2 px-2 overflow-x-auto h-96 snap-x snap-mandatory ">
+        <div
+            class="relative flex overflow-x-scroll overscroll-contain w-[500px] selection:snap-x snap-mandatory gap-2 px-2">
+
             @foreach ($post->media as $key => $file)
                 <div class="w-full h-full snap-always shrink-0 snap-center ">
                     @switch($file->mime)
@@ -28,7 +30,7 @@
 
         <header class="sticky top-0 z-10 flex items-center gap-3 py-2 bg-white border-b ">
 
-            <x-avatar src="https://loremflickr.com/200/200?random" alt="User Avatar" class="h-14 w-14" />
+            <x-avatar src="https://loremflickr.com/200/200?random=1" alt="User Avatar" class="w-10 h-10" />
 
             <div class="grid w-full grid-cols-7 gap-2">
 
@@ -47,9 +49,87 @@
         </header>
 
         <main>
-            <div class="bg-blue-500 h-44"> </div>
-            <div class="bg-red-500 h-44"> </div>
-            <div class="bg-green-500 h-44"> </div>
+            <section class="flex flex-col gap-2">
+
+                {{-- comments --}}
+                <div class="flex items-center gap-3 py-2">
+                    <x-avatar src="https://loremflickr.com/200/200?random" alt="User Avatar" class="mb-auto w-9 h-9" />
+
+                    <div class="grid w-full grid-cols-7 gap-2 ">
+                        {{-- comments --}}
+                        <div class="flex flex-wrap col-span-6 text-sm ">
+                            <p>
+                                <span class="text-sm font-bold ">
+                                    {{ $post->user->name }}
+                                </span>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae laborum tenetur
+                                quidem.
+                            </p>
+                        </div>
+
+                        {{-- likes --}}
+                        <div class="flex justify-end col-span-1 mb-auto text-right">
+                            <button class="ml-auto text-sm font-bold">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                </svg>
+                            </button>
+
+                        </div>
+
+                        {{-- footer --}}
+                        <div class="flex items-center col-span-7 gap-2 text-sm text-gray-700 ">
+                            <span>2d</span>
+                            <span class="font-bold"> {{ $post->comments->count() }} </span>
+                            <span class="font-semibold">Reply</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                {{-- replies --}}
+                <div class="flex items-center w-11/12 gap-3 py-2 ml-auto">
+                    <x-avatar src="https://loremflickr.com/200/200?random" alt="User Avatar" class="w-8 h-8 mb-auto" />
+
+                    <div class="grid w-full grid-cols-7 gap-2 ">
+                        {{-- comments --}}
+                        <div class="flex flex-wrap col-span-6 text-sm ">
+                            <p>
+                                <span class="text-sm font-bold ">
+                                    {{ $post->user->name }}
+                                </span>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae laborum tenetur
+                                quidem.
+                            </p>
+                        </div>
+
+                        {{-- likes --}}
+                        <div class="flex justify-end col-span-1 mb-auto text-right">
+                            <button class="ml-auto text-sm font-bold">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                </svg>
+                            </button>
+
+                        </div>
+
+                        {{-- footer --}}
+                        <div class="flex items-center col-span-7 gap-2 text-sm text-gray-700 ">
+                            <span>2d</span>
+                            <span class="font-bold"> {{ $post->comments->count() }} </span>
+                            <span class="font-semibold">Reply</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
         </main>
 
 
