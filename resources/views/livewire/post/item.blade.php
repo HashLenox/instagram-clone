@@ -22,21 +22,21 @@
     <main>
         <div class="my-2">
             <div x-init="new Swiper($el, {
-            
-            
+
+
                 modules: [Navigation, Pagination],
                 loop: true,
-            
+
                 pagination: {
                     el: '.swiper-pagination',
                 },
-            
+
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-            
-            
+
+
             });" class="swiper  h-[500px] border bg-white">
 
                 <div x-cloak class="swiper-wrapper">
@@ -140,7 +140,7 @@
         {{-- view post modal --}}
         <button
             onclick="Livewire.dispatch('openModal',{component:'post.view.modal',arguments:{'post':{{ $post->id }}}})"
-            class="text-sm font-medium text-slate-500">View all 456 comments</button>
+            class="text-sm font-medium text-slate-500">View all {{ $post->comments->count() }} comments</button>
 
         {{-- add comment --}}
         <form x-data="{ inputText: '' }" class="grid items-center w-full grid-cols-12">
