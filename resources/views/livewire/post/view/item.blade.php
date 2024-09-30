@@ -2,8 +2,7 @@
 
     <aside class="items-center w-full m-auto lg:col-span-7 ">
 
-        <div
-            class="relative flex overflow-x-scroll overscroll-contain w-[500px] selection:snap-x snap-mandatory gap-2 px-2">
+        <div class="flex gap-2 px-2 overflow-x-auto h-96 snap-x snap-mandatory ">
             @foreach ($post->media as $key => $file)
                 <div class="w-full h-full snap-always shrink-0 snap-center ">
                     @switch($file->mime)
@@ -48,13 +47,13 @@
         </header>
 
         <main>
-            <div class="bg-blue-500 h-60"> </div>
-            <div class="bg-red-500 h-60"> </div>
-            <div class="bg-green-500 h-60"> </div>
+            <div class="bg-blue-500 h-44"> </div>
+            <div class="bg-red-500 h-44"> </div>
+            <div class="bg-green-500 h-44"> </div>
         </main>
 
 
-        <footer class="sticky bottom-0 z-10 mt-auto bg-white border-t">
+        <footer class="sticky z-10 mt-auto bg-white border-t bottom-7">
             <div class="flex items-center gap-4 my-2">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9"
