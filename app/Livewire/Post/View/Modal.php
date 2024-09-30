@@ -41,13 +41,7 @@ class Modal extends ModalComponent
     public function render()
     {
         return <<<'BLADE'
-        <main class=" bg-white h-[calc(100vh_-_3.5rem)] md:h-[calc(100vh_-_5rem)] flex flex-col border gap-y-4 px-5">
-            <header class="w-full py-2">
-                <div class="flex justify-end ">
-
-                </div>
-            </header>
-
+        <main class=" bg-white h-[calc(100vh_-_3.5rem)] p-4 md:h-[calc(100vh_-_5rem)] flex flex-col border gap-y-4">
             <livewire:post.view.item :post="$this->post" />
         </main>
         BLADE;

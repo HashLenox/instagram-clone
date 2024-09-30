@@ -82,8 +82,8 @@
                         </div>
                     </div>
                 @endif
-                <!-- If we need scrollbar -->
-                <div class="swiper-scrollbar"></div>
+
+
             </div>
         </div>
     </main>
